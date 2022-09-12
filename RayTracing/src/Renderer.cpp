@@ -43,7 +43,7 @@ uint32_t Renderer::PerPixel(glm::vec2 coord)
 	glm::vec3 rayOrigin(0.0f, 0.0f, 2.0f);
 	glm::vec3 rayDirection(coord.x, coord.y, -1.0f);
 	float radius = 0.5f;
-	rayDirection = glm::normalize(rayDirection);
+	// rayDirection = glm::normalize(rayDirection);
 
 	// (bx^2 + by^2 + bz^2)t^2 + (2(axbx + ayby+ azbz))t + (ax^2 + ay^2 + az^2  - r^2) = 0 
 	// a = ray origin
