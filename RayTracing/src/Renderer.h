@@ -19,4 +19,5 @@ private:
 private:
 	std::shared_ptr<Walnut::Image> m_FinalImage;
 	uint32_t* m_ImageData = nullptr;
+	float m_AspectRatio = 0;
 };
