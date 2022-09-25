@@ -15,10 +15,7 @@ class ExampleLayer : public Walnut::Layer
 public:
 	ExampleLayer()
 		: m_Camera(45.0f, 0.1f, 100.0f)
-	{
-		m_Scene.Spheres.push_back(Sphere{{1.0f, 0.0f, -5.0f}, 1.5f, {0.2f, 0.3f, 1.0f}});
-		m_Scene.Spheres.push_back(Sphere{{0.0f, 0.0f, 0.0f}, 0.5f, {1.0f, 0.0f, 1.0f}});
-	}
+	{}
 	virtual void  OnUpdate(float ts) override
 	{
 		m_Camera.OnUpdate(ts);
@@ -30,6 +27,10 @@ public:
 		ImGui::End();
 
 		ImGui::Begin("Scene");
+		if(ImGui::Button("New Sphere"))
+		{
+			CreateSphere();
+		}
 		for(size_t i = 0; i < m_Scene.Spheres.size(); i++)
 		{
 			ImGui::PushID(i);
@@ -70,6 +71,11 @@ public:
 		m_Renderer.Render(m_Scene, m_Camera);
 
 		m_LastRenderTime = timer.ElapsedMillis();
+	}
+
+	void CreateSphere()
+	{
+		m_Scene.Spheres.push_back(Sphere{{0.0f, 0.0f, 0.0f}, .5f, {1.0f, 0.0f, 1.0f}});
 	}
 private:
 	Renderer m_Renderer;
