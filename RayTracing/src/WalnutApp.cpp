@@ -15,7 +15,22 @@ class ExampleLayer : public Walnut::Layer
 public:
 	ExampleLayer()
 		: m_Camera(45.0f, 0.1f, 100.0f)
-	{}
+	{
+		{
+			Sphere sphere;
+			sphere.Position = {0.0f, 0.0f, 0.0f};
+			sphere.Radius = 1.0f;
+			sphere.Albedo = {1.0f, 0.0f, 1.0f};
+			m_Scene.Spheres.push_back(sphere);
+		}
+		{
+			Sphere sphere;
+			sphere.Position = {0.0f, -101.0f, 0.0f};
+			sphere.Radius = 100.0f;
+			sphere.Albedo = {0.2f, 0.3f, 1.0f};
+			m_Scene.Spheres.push_back(sphere);
+		}
+	}
 	virtual void  OnUpdate(float ts) override
 	{
 		m_Camera.OnUpdate(ts);
