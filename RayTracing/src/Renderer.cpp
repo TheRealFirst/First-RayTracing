@@ -56,7 +56,7 @@ glm::vec4 Renderer::PerPixel(uint32_t x, uint32_t y)
 	ray.Direction = m_ActiveCamera->GetRayDirections()[x + y * m_FinalImage->GetWidth()];
 
 	glm::vec3 color(0.0f);
-	float multiplier = 0.5f;
+	float multiplier = 1.0f;
 	
 	int bounces = 5;
 	for(int i = 0; i < bounces; i++)
@@ -78,7 +78,7 @@ glm::vec4 Renderer::PerPixel(uint32_t x, uint32_t y)
 		sphereColor *= lightIntensity;
 		color += sphereColor * multiplier;
 
-		multiplier *= 0.7f;
+		multiplier *= 0.5f;
 
 		ray.Origin = pay_load.WorldPosition + pay_load.WorldNormal * 0.0001f;
 		ray.Direction = glm::reflect(ray.Direction, pay_load.WorldNormal + material.Roughness * Walnut::Random::Vec3(-0.5f, 0.5f));
