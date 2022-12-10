@@ -3,5 +3,8 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Walnut" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Walnut/vendor/GLFW" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Walnut/vendor/glm" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Walnut/vendor/imgui" vcs="Git" />
   </component>
 </project>
