@@ -51,7 +51,7 @@ void Renderer::Render(const Scene& scene,const Camera& camera) {
 	}
 
 #define MT 1
-#define WayOne 0
+#define WayOne 1
 #if MT
 	
 	std::for_each(std::execution::par, m_ImageVerticalIter.begin(), m_ImageVerticalIter.end(),
@@ -69,7 +69,7 @@ void Renderer::Render(const Scene& scene,const Camera& camera) {
 			accumulatedColor = glm::clamp(accumulatedColor, glm::vec4(0.0f), glm::vec4(1.0f));
 			m_ImageData[x + y * m_FinalImage->GetWidth()] = Utils::ConvertToRGBA(accumulatedColor);
 		});
-#endif
+#else
 		for (uint32_t x = 0; x < m_FinalImage->GetWidth(); x++) 
 		{
 			glm::vec4 color = PerPixel(x, y);
@@ -81,6 +81,8 @@ void Renderer::Render(const Scene& scene,const Camera& camera) {
 			accumulatedColor = glm::clamp(accumulatedColor, glm::vec4(0.0f), glm::vec4(1.0f));
 			m_ImageData[x + y * m_FinalImage->GetWidth()] = Utils::ConvertToRGBA(accumulatedColor);
 		}
+#endif
+			
 	});
 
 #else
